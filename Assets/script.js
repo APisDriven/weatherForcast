@@ -19,13 +19,12 @@ function getWeather(city) {
             currentTemp.innerHTML = data.main.temp + " degrees"
             currentWind.innerHTML = data.wind.speed + " mph"
             currentHumid.innerHTML = data.main.humidity + "%"
+
+            cityName = document.getElementById("cityTime").innerHTML
+            cityName.innerHTML = city
           
             return console.log(data);
-        })
-
-
-
-}
+        })}
 
 function getForcast(lat, lon) {
     var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`;
@@ -33,7 +32,7 @@ function getForcast(lat, lon) {
     fetch(queryURL)
         .then((response) => response.json())
         .then((data) => {
-            for (let i = 3; i < data.list.length; i += 8) {
+            for (let i = 3; i < data.list.length; i + 8) {
                 console.log(data.list[i]);
                 let forecast = data.list[i];
                 // pnpforecast.dt_txt
@@ -43,10 +42,13 @@ function getForcast(lat, lon) {
                 cardEl.setAttribute("id", "eachDay")
                 cardEl.setAttribute("class", "card")
 
+                let futureWeather = document.getElementById("futureWeather")
+                futureWeather.appendChild(cardEl)
+
                 var dayDate = document.createElement("h2")
                 dayDate.setAttribute("id", "dayDate")
                 cardEl.appendChild(dayDate)
-                dayDate.innerHTML = data.dt_txt
+                dayDate.innerHTML = forecast.dt_txt + "am"
 
                 var dayIcon = document.createElement("div")
                 dayIcon.setAttribute("id", "dayIcon")
@@ -62,35 +64,52 @@ function getForcast(lat, lon) {
                 tempTitle.innerHTML = "Temp:"
                 var dayTemp = document.createElement("div")
                 dayTemp.setAttribute("id", "dayTemp")
-                // need to check that this is the correct path for innerHTML
-                dayTemp.innerHTML = data.main.temp
+                dayTemp.innerHTML = forecast.main.temp
                 weatherStats.appendChild(tempLine)
                 tempLine.appendChild(tempTitle)
                 tempLine.appendChild(dayTemp)
 
-                var windLine = document.createElement(li)
+                var windLine = document.createElement("li")
                 var windTitle = document.createElement("h3")
                 windTitle.innerHTML = "Wind:"
                 var dayWind = document.createElement("div")
                 dayWind.setAttribute("id", "dayWind")
-                // need to check that this is the correct path for innerHTML
-                dayWind.innerHTML = data.wind.speed
+                dayWind.innerHTML = forecast.wind.speed
                 weatherStats.appendChild(windLine)
                 windLine.appendChild(windTitle)
                 windLine.appendChild(dayWind)
 
-                var humidLine = document.createElement(li)
+                var humidLine = document.createElement("li")
                 var humidTitle = document.createElement("h3")
                 humidTitle.innerHTML = "Humidity:"
                 var dayHumid = document.createElement("div")
                 dayHumid.setAttribute("id", "dayHumid")
-                // need to check that this is the correct path for innerHTML
-                dayHumid.innerHTML = data.main.humidity
+                dayHumid.innerHTML = forecast.main.humidity
                 weatherStats.appendChild(humidLine)
                 humidLine.appendChild(humidTitle)
                 humidLine.appendChild(dayHumid)
                 
                 return console.log(data);
-}})         }
+}})}
 
+// Function that adds the searched city to the getWeather funtion
+
+// Function that adds searched city to the list of searched cities
+let searchArea = document.getElementById("citiesBox")
+searchArea.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let storedCityList = document.getElementById("storedCityList")
+    newStoredCity = document.createElement("li")
+    newStoredCity.setAttribute("class", "btn")
+    newStoredCity.setAttribute("id", "storedCity")
+    newStoredCity.innerHTML = city
+    storedCityList.appendChild(newStoredCity)
+})
+
+
+// Function to add the clicked previously searched city to the getWeather function
+
+// var searchedCity = getElementById("input")
+// document.addEventListener("click", function (getWeather) )
 getWeather("Detroit");
