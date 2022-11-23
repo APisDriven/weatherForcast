@@ -1,0 +1,16 @@
+body main {
+    margin: auto;
+}
+
+.cities-box {
+    border: solid black;
+
+}
+
+.current-weather {
+    border: solid black;
+}
+
+.future-weather {
+    border: solid black;
+}
