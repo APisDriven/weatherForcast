@@ -17,7 +17,7 @@
         <div class="cities-box" id="citiesBox">
             <h2>Search for a City:</h2>
             <div>
-                <input type="text" placeholder="Search for a city">
+                <input id="city-input" type="text" placeholder="Search for a city">
             </div>
             <button id="citySearch">Search</button>
             <div>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="current-weather" id="currentWeather">
-            <h1 id="cityTime">Detroit </h1>
+            <h1 id="cityTime">City</h1>
             <ul>
                 <!-- populate each item with data relevant to the selected city -->
                 <li>Temp: <div id="temp"></div></li>
@@ -38,8 +38,9 @@
                 <li>Humidity: <div id="humidity"></div></li>
             </ul>
         </div>
-        <div class="future-weather" id="futureWeather">
+        <div class="future-weather" >
             <h2>5-Day Forecast:</h2>
+            <div id="futureWeather"></div>
             <!-- <div class="card-group" id="cardSection">
                 <div class="card" id="dayOne">
                     <h2><div id="dayOneDate"></div></h2>
