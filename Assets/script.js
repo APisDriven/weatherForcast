@@ -22,11 +22,14 @@ function getWeather(city) {
         currentWind.innerHTML = data.wind.speed + " mph"
         currentHumid.innerHTML = data.main.humidity + "%"
         
-        cityName = document.getElementById("cityTime").innerHTML
-        cityName.innerHTML = city
+        let futureWeather = document.getElementById("futureWeather")
+        futureWeather.innerHTML = ""
+
+        // cityName = document.getElementById("cityTime").innerHTML
+        // cityName.innerHTML = city
         
 
-        return console.log(data);
+        // return console.log(data);
     })}
     
     function getForcast(lat, lon) {
@@ -46,7 +49,7 @@ function getWeather(city) {
                 // cardEl.setAttribute("class", "card")
                 
                 let futureWeather = document.getElementById("futureWeather")
-                futureWeather.innerHTML = ""
+                // futureWeather.innerHTML = ""
                 futureWeather.appendChild(cardEl)
                 
                 var dayDate = document.createElement("h2")
