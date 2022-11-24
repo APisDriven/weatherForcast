@@ -1,6 +1,4 @@
 
-
-
 var APIKey = "66c8301045a114f5c909447865310323";
 
 
@@ -14,6 +12,7 @@ function getWeather(city) {
         var lon = data.coord.lon;
         getForcast(lat, lon)
         // console.log("lat", lat, lon)
+
         var currentTemp = document.getElementById("temp")
         var currentWind = document.getElementById("wind")
         var currentHumid = document.getElementById("humidity")
@@ -22,15 +21,15 @@ function getWeather(city) {
         currentWind.innerHTML = data.wind.speed + " mph"
         currentHumid.innerHTML = data.main.humidity + "%"
         
-        let futureWeather = document.getElementById("futureWeather")
-        futureWeather.innerHTML = ""
-
+        let futureWeather = document.getElementById("futureWeather");
+        futureWeather.innerHTML = "";
+        
         // cityName = document.getElementById("cityTime").innerHTML
         // cityName.innerHTML = city
         
-
         // return console.log(data);
     })}
+    
     
     function getForcast(lat, lon) {
         var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`;
@@ -57,11 +56,11 @@ function getWeather(city) {
                 cardEl.appendChild(dayDate)
                 dayDate.innerHTML = forecast.dt_txt
                 
-                // var dayIcon = document.createElement("div")
-                // dayIcon.setAttribute("class", "dayIcon")
-                // cardEl.appendChild(dayIcon)
-                // // need to figure out how to add icon
-                // dayIcon.innerHTML = "img"
+                var dayIcon = document.createElement("div")
+                dayIcon.setAttribute("class", "dayIcon")
+                cardEl.appendChild(dayIcon)
+                // need to figure out how to add icon
+                dayIcon.innerHTML = "img"
                 
                 var weatherStats = document.createElement("ul")
                 cardEl.appendChild(weatherStats)
@@ -119,14 +118,18 @@ function getWeather(city) {
                 CityTitle.innerHTML = cityQuery
             
                 getWeather(cityQuery)
-                // let storedCityList = document.getElementById("storedCityList")
-                // newStoredCity = document.createElement("li")
-                // newStoredCity.setAttribute("class", "btn")
-                // newStoredCity.setAttribute("id", "storedCity")
-                // newStoredCity.innerHTML = document.input.innerHTML
-                // storedCityList.appendChild(newStoredCity)
+
+                let storedCityList = document.getElementById("storedCityList")
+                newStoredCity = document.createElement("li")
+                newStoredCity.setAttribute("class", "btn storedCity")
+                newStoredCity.innerHTML = cityQuery
+                storedCityList.appendChild(newStoredCity)
             })
-            
+
+    let storedCityList = document.getElementById("storedCityList")
+    storedCityList.addEventListener('click', function(event) {
+        getWeather(newStoredCity.innerHTML);
+    })
             // function getCity(city) {
             //     // function that gets the city input amd stores it in the storedCityList
             //     var searchedCity = document.input.innerHTML
@@ -136,3 +139,6 @@ function getWeather(city) {
 // var searchedCity = getElementById("input")
 // document.addEventListener("click", function (getWeather) )
 // getWeather("Detroit");
+
+// 1. get icons to work
+// 2. get previous search button to work
