@@ -1,5 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body main {
     margin: auto;
+}
+
+body {
+    display: flex
+
 }
 
 .cities-box {
@@ -13,4 +24,50 @@ body main {
 
 .future-weather {
     border: solid black;
+    background-color: #0072bb;
+    color: #ffffff;
+
+}
+
+main {
+    width: 75%;
+    /* display: flex; */
+    margin-left: 20px;
+    float: right;
+}
+
+main section {
+    margin-bottom: 20px;
+    /* padding: 50px; */
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #0072bb;
+    color: #ffffff;
+}
+
+.aside {
+    text-align: center;
+    border: solid black;
+    margin-right: 20px;
+    /* padding: 20px; */
+    clear: both;
+    /* display: flex; */
+    float: left;
+    width: 20%;
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #2589bd;
+}
+
+.card {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #0072bb;
+    color: #ffffff;
+
+}
+
+aside section {
+    border: solid black;
+    margin-bottom: 32px;
+    color: #ffffff;
 }
