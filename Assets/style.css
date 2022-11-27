@@ -104,6 +104,10 @@ main section {
 
 }
 
+.storedCity {
+    text-align: center;
+}
+
 aside section {
     /* border: solid black; */
     margin-bottom: 32px;

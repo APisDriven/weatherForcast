@@ -11,12 +11,29 @@ function getWeather(city) {
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         getForcast(lat, lon)
-        // console.log("lat", lat, lon)
+        console.log(data)
 
+        // Display the name of the current city conditions
+        const CityTitle = document.getElementById("cityTime")
+        CityTitle.innerHTML = ""
+        CityTitle.innerHTML = data.name
+
+        // Create Button for a New Searched City
+        let storedCityList = document.getElementById("storedCityList")
+        newStoredCity = document.createElement("button")
+        newStoredCity.setAttribute("class", "btn storedCity")
+        newStoredCity.innerHTML = data.name
+        storedCityList.appendChild(newStoredCity)
+
+        // Target Current Conditions
+        var currentDate = document.getElementById("curr-date")
         var currentTemp = document.getElementById("temp")
         var currentWind = document.getElementById("wind")
         var currentHumid = document.getElementById("humidity")
         
+        // Populate Current Conditions
+        var myDate = new Date( data.dt *1000);
+        currentDate.innerHTML = myDate;
         currentTemp.innerHTML = data.main.temp + " degrees"
         currentWind.innerHTML = data.wind.speed + " mph"
         currentHumid.innerHTML = data.main.humidity + "%"
@@ -41,7 +58,7 @@ function getWeather(city) {
         .then((response) => response.json())
         .then((data) => {
             for (let i = 3; i < data.list.length; i += 8) {
-                console.log(data.list[i]);
+                // console.log(data.list[i]);
                 let forecast = data.list[i];
                 // pnpforecast.dt_txt
                 
@@ -69,7 +86,7 @@ function getWeather(city) {
                 cardEl.appendChild(weatherStats)
                 
                 var tempLine = document.createElement("div")
-                var tempTitle = document.createElement("h3")
+                var tempTitle = document.createElement("h4")
                 tempTitle.innerHTML = "Temp:"
                 var dayTemp = document.createElement("span")
                 dayTemp.setAttribute("class", "dayTemp")
@@ -79,7 +96,7 @@ function getWeather(city) {
                 tempLine.appendChild(dayTemp)
                 
                 var windLine = document.createElement("div")
-                var windTitle = document.createElement("h3")
+                var windTitle = document.createElement("h4")
                 windTitle.innerHTML = "Wind:"
                 var dayWind = document.createElement("span")
                 dayWind.setAttribute("class", "dayWind")
@@ -89,7 +106,7 @@ function getWeather(city) {
                 windLine.appendChild(dayWind)
                 
                 var humidLine = document.createElement("div")
-                var humidTitle = document.createElement("h3")
+                var humidTitle = document.createElement("h4")
                 humidTitle.innerHTML = "Humidity:"
                 var dayHumid = document.createElement("span")
                 dayHumid.setAttribute("class", "dayHumid")
@@ -116,22 +133,17 @@ function getWeather(city) {
 
                 const cityQuery = cityInput.value
 
-                const CityTitle = document.getElementById("cityTime")
-                CityTitle.innerHTML = ""
-                CityTitle.innerHTML = cityQuery
+                // const CityTitle = document.getElementById("cityTime")
+                // CityTitle.innerHTML = ""
+                // CityTitle.innerHTML = cityQuery
             
                 getWeather(cityQuery)
 
-                let storedCityList = document.getElementById("storedCityList")
-                newStoredCity = document.createElement("button")
-                newStoredCity.setAttribute("class", "btn storedCity")
-                newStoredCity.innerHTML = cityQuery
-                storedCityList.appendChild(newStoredCity)
             })
 
-    let storedCityList = document.getElementById("storedCityList")
+    let storedCities = document.getElementsByClassName("storedCityList")
     storedCityList.addEventListener('click', function(event) {
-        getWeather(newStoredCity.value);
+        getWeather(this.value);
     })
             // function getCity(city) {
             //     // function that gets the city input amd stores it in the storedCityList
