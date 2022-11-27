@@ -23,6 +23,9 @@ function getWeather(city) {
         
         let cardSection = document.getElementById("cardSection");
         cardSection.innerHTML = "";
+
+        let input = document.getElementById("city-input")
+        input.value = "";
         
         // cityName = document.getElementById("cityTime").innerHTML
         // cityName.innerHTML = city

@@ -13,12 +13,30 @@
 </head>
 
 <body>
-
-    <main class="main">
-        <header>
-            <h1>Weather Dashboard</h1>
-        </header>
-        <section>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="big-box flex-container">
+        <aside class="aside">
+            <div class="cities-box" id="citiesBox">
+                <h2>Search for a City:</h2>
+                <div>
+                    <input id="city-input" type="text" placeholder="Type a city here">
+                </div>
+                <button id="citySearch"> Get Weather </button>
+            </div>
+            <section>
+                <h4>Searched Cities</h4>
+                <div id="storedCityList" class="flex-container">
+                    <!-- <li class="storedCity">
+                        List Cities Here -->
+                    <!-- Display Console Logged Cities from search bar -->
+                    <!-- </li> -->
+                </div>
+            </section>
+        </aside>
+        <main class="main">
+            <section>
                 <div class="current-weather" id="currentWeather">
                     <!-- Need to figure out how to add icon -->
                     <h1 id="cityTime">City</h1><img src="" id="icon">
@@ -29,13 +47,13 @@
                         <h2>Humidity: <span id="humidity"></span></h2>
                     </div>
                 </div>
-            <div class="future-weather">
-                <div class="forecast-title">
-                <h2>5-Day Forecast:</h2>
-                </div>    
-                <div id="futureWeather"></div>           
-                <div class="card-group flex-container" id="cardSection">
-                <!-- <div class="card" id="dayOne">
+                <div class="future-weather">
+                    <div class="forecast-title">
+                        <h2>5-Day Forecast:</h2>
+                    </div>
+                    <div id="futureWeather"></div>
+                    <div class="card-group flex-container" id="cardSection">
+                        <!-- <div class="card" id="dayOne">
                     <h2><div id="dayOneDate"></div></h2>
                     <div id="dayOneIcon"></div>
                     <ul>
@@ -80,31 +98,14 @@
                         <li><h3>Humidity:</h3><div id="dayFiveHumidity"></div></li>
                     </ul>
                 </div> -->
-            </div>
-        </section>
-    </main>
-    <aside class="aside">
-        <div class="cities-box" id="citiesBox">
-            <h2>Search for a City:</h2>
-            <div>
-                <input id="city-input" type="text" placeholder="Type a city here">
-            </div>
-            <button id="citySearch">  Get Weather  </button>
-        </div>
-        <section>
-            <h4>Searched Cities</h4>
-            <div id="storedCityList" class="flex-container">
-                <!-- <li class="storedCity">
-                    List Cities Here -->
-                    <!-- Display Console Logged Cities from search bar -->
-                <!-- </li> -->
-            </div>
-        </section>
-    </aside>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-    <script src="./Assets/script.js"></script>
+                    </div>
+            </section>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+        <script src="./Assets/script.js"></script>
+    </div>
 </body>
 
 </html>
