@@ -23,7 +23,15 @@ function getWeather(city) {
         newStoredCity = document.createElement("button")
         newStoredCity.setAttribute("class", "btn storedCity")
         newStoredCity.innerHTML = data.name
+        newStoredCity.value = data.name
         storedCityList.appendChild(newStoredCity)
+
+        // let storedCities = document.getElementsByClassName("storedCityList")
+        newStoredCity.addEventListener('click', function(event) {
+            console.log(event.target)
+            getWeather(event.target.value);
+        })
+    
 
         // Target Current Conditions
         var currentIcon = document.getElementById("icon")
@@ -80,7 +88,7 @@ function getWeather(city) {
                 
                 var dayIcon = document.createElement("img")
                 dayIcon.setAttribute("class", "dayIcon")
-                dayIcon.setAttribute("src", "")
+                dayIcon.setAttribute("src", "dayIcon")
                 cardEl.appendChild(dayIcon)
                 // need to figure out how to add icon
                 dayIcon.src = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`
@@ -131,6 +139,7 @@ function getWeather(city) {
             let button = document.getElementById("citySearch")
             button.addEventListener('click', function(event) {
                 event.preventDefault();
+                console.log('it works')
 
                 const cityInput = document.getElementById("city-input")
 
@@ -144,10 +153,6 @@ function getWeather(city) {
 
             })
 
-    let storedCities = document.getElementsByClassName("storedCityList")
-    storedCityList.addEventListener('click', function(event) {
-        getWeather(this.value);
-    })
             // function getCity(city) {
             //     // function that gets the city input amd stores it in the storedCityList
             //     var searchedCity = document.input.innerHTML
